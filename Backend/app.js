@@ -1,7 +1,7 @@
 /* Import des modules necessaires */
 const express = require("express");
 
-// const bookRoutes = require("./routes/book.routes");
+const bookRoutes = require("./routes/bookRoutes");
 const userRoutes = require("./routes/user.routes");
 
 const path = require("path");
@@ -49,7 +49,7 @@ app.use(
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/auth", userRoutes);
-// app.use("/api/books", bookRoutes);
+app.use("/api/books", bookRoutes);
 
 module.exports = app;
 

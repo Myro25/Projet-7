@@ -1,7 +1,10 @@
-/* Import des modules necessaires */
+/* Import des modules nécessaires */
 const app = require("./app");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config({ encoding: "latin1" });
+
+// Définition de l'option strictQuery à false
+mongoose.set('strictQuery', false);
 
 /* Connection BDD mongoose */
 mongoose
@@ -9,7 +12,7 @@ mongoose
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-    // Demarrage serveur
+    // Démarrage serveur
     .then(() =>
         app.listen(process.env.SERVER_PORT, () => {
             console.log(
@@ -17,6 +20,5 @@ mongoose
             );
         })
     )
-    // Arret du serveur si connection impossible
+    // Arrêt du serveur si la connexion est impossible
     .catch(() => console.log("Server connection failed !"));
-

@@ -4,8 +4,9 @@ const router = express.Router();
 
 const userCtrl = require("../controllers/user.controller");
 
-const limiter = require("../middleware/GuardRateLimit");
-const GuardPasswordValidator = require("../middleware/GuardPasswordValidator");
+const limiter = require("../middlewares/GuardRateLimit");
+
+const GuardPasswordValidator = require("../middlewares/GuardPasswordValidator");
 
 /* Routage User */
 router.post("/signup", GuardPasswordValidator, userCtrl.signup);
