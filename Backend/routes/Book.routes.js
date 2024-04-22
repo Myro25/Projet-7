@@ -4,7 +4,7 @@ const express = require('express');
 const GuardMulter = require('../middlewares/GuardMulter');
 const bookCtrls = require('../controllers/controlsBook');
 const GuardAuth = require('../middlewares/GuardAuth');
-
+const resizeImage = require('../middlewares/sharpMiddleware');
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ const router = express.Router();
 router.get('/', bookCtrls.getAllBooks);
 router.get('/bestrating', bookCtrls.getBestBooks);
 router.get('/:id', bookCtrls.getBookById);
-router.post('/', GuardAuth, GuardMulter, bookCtrls.createNewBook);
+router.post('/', GuardAuth, GuardMulter, resizeImage, bookCtrls.createNewBook);
 router.post('/:id/rating', GuardAuth, bookCtrls.addNewGrade);
 router.put('/:id', GuardAuth, GuardMulter, bookCtrls.updateBook);
 router.delete('/:id', GuardAuth, bookCtrls.deleteBook);
