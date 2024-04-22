@@ -1,7 +1,7 @@
 /* Import des modules necessaires */
 const express = require("express");
 
-const bookRoutes = require("./routes/bookRoutes");
+const bookRoutes = require("./routes/Book.routes");
 const userRoutes = require("./routes/user.routes");
 
 const path = require("path");
@@ -26,11 +26,6 @@ app.use((req, res, next) => {
     );
     next();
 });
-
-/* Securite en tete */
-const helmet = require("helmet");
-
-app.use(helmet());
 
 /* RateLimit */
 const rateLimit = require("express-rate-limit");
